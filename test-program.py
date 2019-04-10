@@ -20,7 +20,7 @@ intervall = 0.5
 for x in range(0, LOOP):
 
 	try:
-		i2cbus = SMBus(1)
+		i2cbus = SMBus(0)
 		i2cbus.write_byte(0x70, 0x51)
 		time.sleep(0.1)
 		val = i2cbus.read_word_data(0x70, 0xe1)
