@@ -15,7 +15,7 @@ import subprocess
 import os
 
 # Hier wird das Objekt dev fuer den I2C Bus 1 angelegt.
-dev = smbus.SMBus(1)
+dev = smbus.SMBus(0)
 
 # es wird der Bildschirm in der Konsole geloescht.
 os.system('clear')
@@ -28,7 +28,7 @@ print 'This are the devices which are available:'
 print '---------------------------------------------------------'
 # Hier wird die Ausgabe des Aufrufes i2cdetect -y 1 via Python
 # in dem Terminal-Fenster ausgegeben.
-output = subprocess.check_output("i2cdetect -y 1", shell=True)
+output = subprocess.check_output("i2cdetect -y -r 0", shell=True)
 print output
 
 
@@ -39,7 +39,7 @@ print 'Now you could change the sensor I2C address.'
 print '---------------------------------------------------------'
 
 try:
-   addressOld = raw_input("The actual sensor address (e. g. 0x70):")
+   addressOld = raw_input("The actual sensor address (e.g. 0x70):")
    addressNew = raw_input("The new sensor address (0x70 to 0x77):") 
 except ValueError: 
    sys.exit()
@@ -81,7 +81,7 @@ if addressNew in range(111, 120):
    
    # Hier wird die Ausgabe des Aufrufes i2cdetect -y 1 via Python
    # in dem Terminal-Fenster ausgegeben.
-   output = subprocess.check_output("i2cdetect -y 1", shell=True)
+   output = subprocess.check_output("i2cdetect -y -r 0", shell=True)
    print output
 else:
    os.system('clear')
