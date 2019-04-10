@@ -1,4 +1,4 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # coding: latin-1
 # Autor:   Ingmar Stapel
 # Datum:   20170723
